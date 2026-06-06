@@ -4,7 +4,7 @@ import LineMockup from "./components/LineMockup";
 // ─────────────────────────────────────────────
 // CTA links — fill in before launch
 // ─────────────────────────────────────────────
-const CALENDLY_URL = "https://line.me/R/ti/p/@784xoqdi";
+const CALENDLY_URL = "https://calendly.com/flomiocean/30min";
 const LINE_URL = "https://line.me/R/ti/p/@784xoqdi";
 
 // ─────────────────────────────────────────────
