@@ -496,11 +496,155 @@ function Footer() {
 }
 
 // ─────────────────────────────────────────────
+// FAQ
+// ─────────────────────────────────────────────
+const faqs = [
+  {
+    q: "AI 導入需要換系統或買新軟體嗎？",
+    a: "不需要。我們從你們每天已經在用的 LINE 開始，員工不需要學新 app，老闆不需要改變習慣。",
+  },
+  {
+    q: "費用大概多少？",
+    a: "服務分三個層次：AI 導入健檢 NT$5,000–8,000（一次性），LINE Bot 建置 NT$15,000–25,000（建置費），陪伴顧問 NT$8,000–15,000/月。可以從健檢開始，確認方向再決定下一步。",
+  },
+  {
+    q: "適合什麼規模的公司？",
+    a: "主要服務 5–50 人的台灣中小企業。規模不是重點，重點是你們有沒有每天重複在做、卻沒有人想做的事——那就是 AI 最適合介入的地方。",
+  },
+  {
+    q: "多久可以看到效果？",
+    a: "第一個月通常就能感受到。我只做一件事，做完確認有效再做下一件，不會讓你等三個月才看到結果。",
+  },
+  {
+    q: "要準備什麼才能開始？",
+    a: "不需要準備任何東西。第一步是預約 20 分鐘免費諮詢，聊聊你們現在的工作狀況，我來判斷哪裡最值得開始。",
+  },
+  {
+    q: "跟一般 AI 課程或工具有什麼不同？",
+    a: "課程教你怎麼用工具，但沒有人陪你把工具接進真實的工作流程。Readie 做的是後半段——確保 AI 真的被員工用起來，不是買了就放著。",
+  },
+];
+
+function FAQ() {
+  return (
+    <section id="faq" className="bg-cream py-20 px-6">
+      <div className="max-w-3xl mx-auto">
+        <FadeIn>
+          <div className="text-center mb-14">
+            <p className="text-ember font-medium text-sm tracking-widest uppercase mb-3">
+              常見問題
+            </p>
+            <h2
+              className="text-ink text-3xl lg:text-4xl font-black"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              你可能想知道的事
+            </h2>
+          </div>
+        </FadeIn>
+
+        <div className="space-y-4">
+          {faqs.map((item, i) => (
+            <FadeIn key={i} delay={i * 60}>
+              <div className="bg-white rounded-2xl px-6 py-5 border border-fog hover:border-ember/30 transition-colors">
+                <p
+                  className="font-bold text-ink mb-2"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  {item.q}
+                </p>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.a}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+// JSON-LD Structured Data
+// ─────────────────────────────────────────────
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://readie.tw/#marco",
+      name: "Marco Liu",
+      jobTitle: "AI 導入顧問",
+      description:
+        "擁有 19 年醫療影像與國際業務經驗，現專注於幫助台灣中小企業導入 AI 工作流程。",
+      url: "https://readie.tw",
+      worksFor: { "@id": "https://readie.tw/#readie" },
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://readie.tw/#readie",
+      name: "Readie",
+      description:
+        "台灣 AI 導入顧問服務。幫中小企業找出第一件真正值得做的 AI 事，從 LINE 開始，讓 AI 真正被員工用起來。",
+      url: "https://readie.tw",
+      founder: { "@id": "https://readie.tw/#marco" },
+      areaServed: "TW",
+      inLanguage: "zh-TW",
+      priceRange: "NT$5,000–NT$25,000",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Readie 服務項目",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            name: "AI 導入健檢",
+            description:
+              "到公司聊兩小時，了解工作流程，找出最值得從 AI 開始的那一件事。",
+            price: "5000",
+            priceCurrency: "TWD",
+          },
+          {
+            "@type": "Offer",
+            name: "LINE Bot 建置",
+            description:
+              "把 AI 接進企業每天都在用的 LINE，業務跟進、客服回覆、內部報告。",
+            price: "15000",
+            priceCurrency: "TWD",
+          },
+          {
+            "@type": "Offer",
+            name: "陪伴顧問",
+            description:
+              "每月陪同確認導入狀況，確保 AI 真正被員工持續使用。",
+            price: "8000",
+            priceCurrency: "TWD",
+          },
+        ],
+      },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.a,
+        },
+      })),
+    },
+  ],
+};
+
+// ─────────────────────────────────────────────
 // Page
 // ─────────────────────────────────────────────
 export default function Page() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <main>
         <Hero />
@@ -508,6 +652,7 @@ export default function Page() {
         <Services />
         <Philosophy />
         <About />
+        <FAQ />
         <CallToAction />
       </main>
       <Footer />
