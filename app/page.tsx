@@ -22,6 +22,8 @@ function Header() {
         </span>
         <a
           href={CALENDLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-sm font-medium bg-ember text-warm px-4 py-2 rounded-full hover:bg-ember-dark transition-colors"
         >
           預約免費諮詢
@@ -63,6 +65,8 @@ function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <a
               href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-ember text-warm font-medium px-7 py-3.5 rounded-full hover:bg-ember-dark transition-colors text-base"
             >
               預約 20 分鐘免費諮詢 →
@@ -407,12 +411,16 @@ function CallToAction() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-pine text-warm font-medium px-7 py-3.5 rounded-full hover:bg-pine-light transition-colors text-base shadow-lg"
             >
               預約免費諮詢 →
             </a>
             <a
               href={LINE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-white/20 border border-white/40 text-warm font-medium px-7 py-3.5 rounded-full hover:bg-white/30 transition-colors text-base"
             >
               先加 LINE，慢慢來也可以
@@ -476,6 +484,8 @@ function Footer() {
               <p>readie.tw</p>
               <a
                 href={LINE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block hover:text-warm transition-colors"
               >
                 LINE：Marco @ Readie
