@@ -1,4 +1,5 @@
 import FadeIn from "./components/FadeIn";
+import LineMockup from "./components/LineMockup";
 
 // ─────────────────────────────────────────────
 // CTA links — fill in before launch
@@ -33,56 +34,6 @@ function Header() {
 // ─────────────────────────────────────────────
 // Hero
 // ─────────────────────────────────────────────
-function LineMockup() {
-  return (
-    <div className="bg-[#F0F0F0] rounded-2xl p-4 w-full max-w-xs shadow-xl border border-fog">
-      {/* chat header */}
-      <div className="flex items-center gap-2 mb-4 pb-3 border-b border-fog-dark">
-        <div className="w-8 h-8 rounded-full bg-pine flex items-center justify-center text-warm text-xs font-bold">
-          R
-        </div>
-        <div>
-          <p className="text-ink font-medium text-sm">Marco @ Readie</p>
-          <p className="text-xs text-gray-400">AI 導入顧問</p>
-        </div>
-      </div>
-
-      {/* messages */}
-      <div className="space-y-3 text-sm">
-        <div className="flex justify-start">
-          <div className="bg-white text-ink rounded-xl rounded-tl-none px-3 py-2 max-w-[80%] shadow-sm">
-            <p>老闆叫我研究 AI，但我不知道從哪裡開始…</p>
-          </div>
-        </div>
-
-        <div className="flex justify-end">
-          <div className="bg-[#06C755] text-white rounded-xl rounded-tr-none px-3 py-2 max-w-[85%] shadow-sm">
-            <p>先不要急著買工具。</p>
-            <p className="mt-1">
-              告訴我，你們公司現在最花時間的工作是什麼？
-            </p>
-          </div>
-        </div>
-
-        <div className="flex justify-start">
-          <div className="bg-white text-ink rounded-xl rounded-tl-none px-3 py-2 max-w-[80%] shadow-sm">
-            <p>每天回客戶 LINE 就要花一兩個小時…</p>
-          </div>
-        </div>
-
-        <div className="flex justify-end">
-          <div className="bg-[#06C755] text-white rounded-xl rounded-tr-none px-3 py-2 max-w-[85%] shadow-sm">
-            <p>好，那我們就從這裡開始。</p>
-            <p className="mt-1 opacity-90">
-              這是可以立刻做、立刻有感的那一件事。
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function Hero() {
   return (
     <section className="bg-pine min-h-screen flex items-center pt-16">
