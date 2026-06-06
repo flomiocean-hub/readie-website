@@ -419,9 +419,6 @@ function CallToAction() {
             </a>
           </div>
 
-          <p className="text-warm/60 text-sm mt-8">
-            或者直接寫信給我：marco@readie.ai
-          </p>
         </FadeIn>
       </div>
     </section>
@@ -476,13 +473,7 @@ function Footer() {
               聯絡方式
             </p>
             <div className="space-y-2 text-fog-dark text-sm">
-              <p>readie.ai</p>
-              <a
-                href="mailto:marco@readie.ai"
-                className="block hover:text-warm transition-colors"
-              >
-                marco@readie.ai
-              </a>
+              <p>readie.tw</p>
               <a
                 href={LINE_URL}
                 className="block hover:text-warm transition-colors"
