@@ -4,8 +4,8 @@ import LineMockup from "./components/LineMockup";
 // ─────────────────────────────────────────────
 // CTA links — fill in before launch
 // ─────────────────────────────────────────────
-const CALENDLY_URL = "#calendly"; // TODO: replace with real Calendly link
-const LINE_URL = "#line"; // TODO: replace with LINE official account link
+const CALENDLY_URL = "https://line.me/R/ti/p/@784xoqdi";
+const LINE_URL = "https://line.me/R/ti/p/@784xoqdi";
 
 // ─────────────────────────────────────────────
 // Header
