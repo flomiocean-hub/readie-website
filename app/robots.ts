@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://readie.tw/sitemap.xml",
+    sitemap: "https://readie.ai/sitemap.xml",
   };
 }

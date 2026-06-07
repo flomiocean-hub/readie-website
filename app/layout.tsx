@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://readie.tw"),
+  metadataBase: new URL("https://readie.ai"),
   title: "Readie — AI 導入顧問｜幫台灣中小企業真正用起來 AI",
   description:
     "Readie 是台灣 AI 導入顧問服務，創辦人 Marco Liu 擁有 19 年產業經驗。不換系統、不買新軟體，從 LINE 開始，幫中小企業找出第一件真正值得做的 AI 事。",
@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     "Readie",
     "Marco Liu",
   ],
-  authors: [{ name: "Marco Liu", url: "https://readie.tw" }],
+  authors: [{ name: "Marco Liu", url: "https://readie.ai" }],
   creator: "Marco Liu",
   openGraph: {
     type: "website",
     locale: "zh_TW",
-    url: "https://readie.tw",
+    url: "https://readie.ai",
     siteName: "Readie AI 導入顧問",
     title: "Readie — AI 導入顧問｜幫台灣中小企業真正用起來 AI",
     description:
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     images: ["/marco.jpg"],
   },
   alternates: {
-    canonical: "https://readie.tw",
+    canonical: "https://readie.ai",
   },
   robots: {
     index: true,

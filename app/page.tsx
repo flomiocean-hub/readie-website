@@ -581,22 +581,22 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://readie.tw/#marco",
+      "@id": "https://readie.ai/#marco",
       name: "Marco Liu",
       jobTitle: "AI 導入顧問",
       description:
         "擁有 19 年醫療影像與國際業務經驗，現專注於幫助台灣中小企業導入 AI 工作流程。",
-      url: "https://readie.tw",
-      worksFor: { "@id": "https://readie.tw/#readie" },
+      url: "https://readie.ai",
+      worksFor: { "@id": "https://readie.ai/#readie" },
     },
     {
       "@type": "LocalBusiness",
-      "@id": "https://readie.tw/#readie",
+      "@id": "https://readie.ai/#readie",
       name: "Readie",
       description:
         "台灣 AI 導入顧問服務。幫中小企業找出第一件真正值得做的 AI 事，從 LINE 開始，讓 AI 真正被員工用起來。",
-      url: "https://readie.tw",
-      founder: { "@id": "https://readie.tw/#marco" },
+      url: "https://readie.ai",
+      founder: { "@id": "https://readie.ai/#marco" },
       areaServed: "TW",
       inLanguage: "zh-TW",
       priceRange: "NT$5,000–NT$25,000",
