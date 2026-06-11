@@ -1,5 +1,21 @@
 import type { Metadata } from "next";
+import { Noto_Sans_TC, Noto_Serif_TC } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+
+const serif = Noto_Serif_TC({
+  subsets: ["latin"],
+  weight: ["500", "700", "900"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const sans = Noto_Sans_TC({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://readie.ai"),
@@ -26,20 +42,11 @@ export const metadata: Metadata = {
     title: "Readie — AI 導入顧問｜幫台灣中小企業真正用起來 AI",
     description:
       "不換系統、不買新軟體，從 LINE 開始。幫你找出第一件真正值得做的 AI 事。",
-    images: [
-      {
-        url: "/marco.jpg",
-        width: 1254,
-        height: 1254,
-        alt: "Marco Liu — Readie AI 導入顧問",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Readie — AI 導入顧問",
     description: "不換系統、不買新軟體，從 LINE 開始。",
-    images: ["/marco.jpg"],
   },
   alternates: {
     canonical: "https://readie.ai",
@@ -60,20 +67,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-TW">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;700;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="min-h-screen">{children}</body>
+    <html lang="zh-TW" className={`${serif.variable} ${sans.variable}`}>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
