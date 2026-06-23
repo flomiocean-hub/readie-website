@@ -311,3 +311,143 @@ footer { background: var(--ink-deep); padding: 60px 0 40px; border-top: 1px soli
   .threshold .line { width: 100% !important } .threshold .tick { left: calc(100% - 11px) !important; opacity: 1 !important }
 }
 :focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; border-radius: 4px }
+
+/* ============================================================
+   GUIDE / DOC PAGE  (.doc 命名空間，只作用在參考頁)
+   ============================================================ */
+.doc-hero {
+  background: radial-gradient(120% 80% at 12% 0%, #223535 0%, var(--ink) 55%);
+  padding: 150px 0 80px;
+}
+.doc-hero .kicker {
+  font-size: .72rem; font-weight: 500; letter-spacing: .34em; text-transform: uppercase;
+  color: var(--terracotta);
+}
+.doc-hero h1 {
+  font-family: var(--serif); font-weight: 900; line-height: 1.24;
+  font-size: clamp(2.2rem, 5vw, 4rem); margin-top: 18px; letter-spacing: .01em; max-width: 18ch;
+}
+.doc-hero .lede {
+  margin-top: 26px; font-size: clamp(1rem, 1.4vw, 1.18rem); line-height: 1.95;
+  color: var(--cream-dim); max-width: 52ch; font-weight: 300;
+}
+.doc-meta {
+  margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px 22px;
+  font-size: .82rem; font-weight: 300; color: var(--cream-dim); opacity: .8;
+}
+.doc-meta span { display: inline-flex; align-items: center; gap: .5em }
+
+/* doc body sections alternate light/dark via .light already */
+.doc { padding: clamp(64px, 8vw, 104px) 0 }
+.doc .lane { max-width: 880px }
+.doc h2 {
+  font-family: var(--serif); font-weight: 900; line-height: 1.3;
+  font-size: clamp(1.6rem, 3vw, 2.4rem); letter-spacing: .01em;
+}
+.doc h2 .num {
+  font-family: var(--sans); font-weight: 500; font-size: .9rem; letter-spacing: .28em;
+  color: var(--terracotta); display: block; margin-bottom: 14px;
+}
+.doc h3 {
+  font-family: var(--serif); font-weight: 700; font-size: clamp(1.15rem, 2vw, 1.4rem);
+  margin-top: 40px;
+}
+.doc p { font-weight: 300; font-size: 1rem; line-height: 1.95; margin-top: 16px; max-width: 64ch }
+.light.doc p { color: var(--ink-dim) }
+.doc.dark p { color: var(--cream-dim) }
+.doc strong { font-weight: 500 }
+.light.doc strong { color: var(--ink) }
+.doc.dark strong { color: var(--cream) }
+.doc ul.bullets { list-style: none; margin-top: 18px; max-width: 64ch }
+.doc ul.bullets li {
+  position: relative; padding-left: 24px; margin-top: 12px;
+  font-weight: 300; font-size: 1rem; line-height: 1.85;
+}
+.light.doc ul.bullets li { color: var(--ink-dim) }
+.doc.dark ul.bullets li { color: var(--cream-dim) }
+.doc ul.bullets li::before {
+  content: ""; position: absolute; left: 4px; top: .72em; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--terracotta);
+}
+
+/* code block */
+.code { margin-top: 22px; border-radius: 14px; overflow: hidden; position: relative }
+.code .code-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 14px; background: #0f1a1a; border-bottom: 1px solid rgba(250, 248, 244, .08);
+}
+.code .code-lang {
+  font-family: var(--sans); font-size: .68rem; font-weight: 500; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--cream-dim);
+}
+.copy-btn {
+  font-family: var(--sans); font-size: .72rem; font-weight: 500; cursor: pointer;
+  color: var(--cream-dim); background: transparent; border: 1px solid var(--cream-faint);
+  border-radius: 100px; padding: .25rem .8rem; transition: .2s;
+}
+.copy-btn:hover { color: var(--cream); border-color: var(--cream-dim) }
+.code pre {
+  margin: 0; background: #15201f; padding: 16px 18px; overflow-x: auto;
+}
+.code code {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-size: .86rem; line-height: 1.7; color: #e8e4dc; white-space: pre;
+}
+
+/* callout */
+.callout {
+  margin-top: 24px; border-left: 3px solid var(--terracotta); border-radius: 0 12px 12px 0;
+  padding: 18px 20px; background: rgba(212, 107, 47, .08);
+}
+.callout .tag { font-size: .72rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--terracotta) }
+.callout p { margin-top: 8px }
+.light.doc .callout p { color: var(--ink) }
+
+/* decision cards */
+.paths { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 28px }
+.path-card { border: 1px solid var(--ink-faint); border-radius: 16px; padding: 24px 22px; background: rgba(255, 255, 255, .5) }
+.path-card .pc-when { font-size: .74rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--terracotta) }
+.path-card h4 { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; margin-top: 10px }
+.path-card p { font-size: .92rem; margin-top: 10px }
+a.path-card { display: block; transition: .25s }
+a.path-card:hover { border-color: var(--terracotta); transform: translateY(-3px); box-shadow: 0 18px 40px rgba(28, 43, 43, .12) }
+a.path-card .pc-go { margin-top: 14px; font-size: .85rem; font-weight: 500; color: var(--terracotta) }
+
+/* table */
+.doc-table-wrap { margin-top: 26px; overflow-x: auto; border-radius: 14px; border: 1px solid var(--ink-faint) }
+.doc.dark .doc-table-wrap { border-color: var(--cream-faint) }
+table.doc-table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: .9rem }
+table.doc-table th, table.doc-table td {
+  text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--ink-faint);
+  font-weight: 300; line-height: 1.6; vertical-align: top;
+}
+.doc.dark table.doc-table th, .doc.dark table.doc-table td { border-bottom-color: var(--cream-faint) }
+table.doc-table th { font-weight: 500; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; opacity: .7 }
+table.doc-table tr:last-child td { border-bottom: none }
+table.doc-table td:first-child { font-weight: 400 }
+.light.doc table.doc-table td:first-child { color: var(--ink) }
+
+/* shortcut / step list */
+.steps { counter-reset: s; margin-top: 24px; max-width: 64ch }
+.steps li { list-style: none; position: relative; padding-left: 46px; margin-top: 18px; font-weight: 300; line-height: 1.85 }
+.steps li::before {
+  counter-increment: s; content: counter(s); position: absolute; left: 0; top: -2px;
+  width: 30px; height: 30px; border-radius: 50%; background: var(--terracotta); color: #fff;
+  font-family: var(--serif); font-weight: 700; font-size: .9rem; display: grid; place-items: center;
+}
+.light.doc .steps li { color: var(--ink-dim) }
+.doc.dark .steps li { color: var(--cream-dim) }
+.steps li code, .doc p code, .doc li code {
+  font-family: ui-monospace, Menlo, monospace; font-size: .85em;
+  background: rgba(212, 107, 47, .12); color: var(--terracotta); padding: .1em .4em; border-radius: 5px;
+}
+.doc.dark p code, .doc.dark li code { background: rgba(212, 107, 47, .2) }
+
+.doc-toc {
+  margin-top: 34px; display: flex; flex-wrap: wrap; gap: 10px;
+}
+.doc-toc a {
+  font-size: .82rem; font-weight: 400; border: 1px solid var(--cream-faint);
+  border-radius: 100px; padding: .4rem .95rem; color: var(--cream-dim); transition: .2s;
+}
+.doc-toc a:hover { color: var(--cream); border-color: var(--cream-dim) }

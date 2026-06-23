@@ -442,7 +442,8 @@ function Footer() {
           <div>
             <p className="foot-h">快速連結</p>
             <a href="#services">服務說明</a>
-            <a href="#about">關於 Marco</a>
+            <a href="#about">關於我</a>
+            <a href="/guides/claude-code">Claude Code 佈建參照</a>
             <a
               href={CALENDLY("footer")}
               target="_blank"

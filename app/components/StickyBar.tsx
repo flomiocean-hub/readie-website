@@ -25,7 +25,7 @@ export default function StickyBar() {
         <nav className="nav">
           <a href="#pains">熟悉的狀況</a>
           <a href="#services">服務說明</a>
-          <a href="#about">關於 Marco</a>
+          <a href="#about">關於我</a>
           <a href="#faq">常見問題</a>
           <TrackedLink
             className="bar-cta"
