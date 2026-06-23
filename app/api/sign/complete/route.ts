@@ -43,23 +43,30 @@ export async function POST(request: NextRequest) {
     const fileName = `${doc.contract_number}-signed.pdf`
 
     // 先產 PDF——若失敗就不改 DB 狀態，讓使用者可重試
-    const pdfBuffer = await generateSignedPdf({
-      contract_number: doc.contract_number,
-      type: doc.type,
-      client_name: doc.client_name,
-      client_company: doc.client_company,
-      client_email: doc.client_email,
-      line_items: doc.line_items ?? [],
-      discount_type: doc.discount_type,
-      discount_value: doc.discount_value,
-      payment_terms: doc.payment_terms,
-      payment_note: doc.payment_note,
-      note: doc.note,
-      signature_name,
-      signature_image: signature_image ?? null,
-      signed_at: now,
-      signer_ip: ip,
-    })
+    let pdfBuffer: Buffer
+    try {
+      pdfBuffer = await generateSignedPdf({
+        contract_number: doc.contract_number,
+        type: doc.type,
+        client_name: doc.client_name,
+        client_company: doc.client_company,
+        client_email: doc.client_email,
+        line_items: doc.line_items ?? [],
+        discount_type: doc.discount_type,
+        discount_value: doc.discount_value,
+        payment_terms: doc.payment_terms,
+        payment_note: doc.payment_note,
+        note: doc.note,
+        signature_name,
+        signature_image: signature_image ?? null,
+        signed_at: now,
+        signer_ip: ip,
+      })
+    } catch (pdfErr) {
+      const msg = pdfErr instanceof Error ? pdfErr.message : String(pdfErr)
+      console.error('[PDF generation failed]', pdfErr)
+      return NextResponse.json({ error: `PDF 生成失敗：${msg}` }, { status: 500 })
+    }
 
     const pdfBase64 = pdfBuffer.toString('base64')
     const attachments = [{ filename: fileName, content: pdfBase64 }]
@@ -138,7 +145,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ ok: true })
   } catch (e) {
-    console.error(e)
-    return NextResponse.json({ error: '伺服器錯誤' }, { status: 500 })
+    const msg = e instanceof Error ? e.message : String(e)
+    console.error('[sign/complete]', e)
+    return NextResponse.json({ error: `伺服器錯誤：${msg}` }, { status: 500 })
   }
 }

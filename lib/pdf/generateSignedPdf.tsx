@@ -8,8 +8,8 @@ const FONTS_DIR = path.join(process.cwd(), 'public', 'fonts')
 Font.register({
   family: 'NotoSansTC',
   fonts: [
-    { src: path.join(FONTS_DIR, 'NotoSansTC-Regular.otf'), fontWeight: 400 },
-    { src: path.join(FONTS_DIR, 'NotoSansTC-Bold.otf'),    fontWeight: 700 },
+    { src: path.join(FONTS_DIR, 'NotoSansTC-400.woff'), fontWeight: 400 },
+    { src: path.join(FONTS_DIR, 'NotoSansTC-700.woff'), fontWeight: 700 },
   ],
 })
 
