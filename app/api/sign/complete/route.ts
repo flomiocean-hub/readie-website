@@ -38,27 +38,11 @@ export async function POST(request: NextRequest) {
     if (!event) return NextResponse.json({ error: '請先完成 Email 驗證' }, { status: 400 })
 
     const now = new Date().toISOString()
-
-    // 更新文件狀態
-    await supabase.from('documents').update({
-      status: 'signed',
-      signed_at: now,
-      signer_ip: ip,
-      signature_image: signature_image ?? null,
-    }).eq('id', doc.id)
-
-    // 更新簽署事件
-    await supabase.from('sign_events').update({
-      signature_text: signature_name,
-      signed_at: now,
-      ip_address: ip,
-    }).eq('id', event.id)
-
     const signedAt = new Date(now).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' })
     const docTypeLabel = doc.type === 'nda' ? '保密合約書' : '報價確認單'
     const fileName = `${doc.contract_number}-signed.pdf`
 
-    // 產生已簽署 PDF
+    // 先產 PDF——若失敗就不改 DB 狀態，讓使用者可重試
     const pdfBuffer = await generateSignedPdf({
       contract_number: doc.contract_number,
       type: doc.type,
@@ -78,11 +62,21 @@ export async function POST(request: NextRequest) {
     })
 
     const pdfBase64 = pdfBuffer.toString('base64')
+    const attachments = [{ filename: fileName, content: pdfBase64 }]
 
-    const attachments = [{
-      filename: fileName,
-      content: pdfBase64,
-    }]
+    // PDF 產好後才寫入 DB 狀態，確保失敗不會卡住
+    await supabase.from('documents').update({
+      status: 'signed',
+      signed_at: now,
+      signer_ip: ip,
+      signature_image: signature_image ?? null,
+    }).eq('id', doc.id)
+
+    await supabase.from('sign_events').update({
+      signature_text: signature_name,
+      signed_at: now,
+      ip_address: ip,
+    }).eq('id', event.id)
 
     // 寄通知給客戶（含 PDF 附件）
     await resend.emails.send({
